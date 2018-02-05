@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg2"
+   y="0px"
+   x="0px"
+   version="1.1"
+   viewBox="0 0 60 60">
+  <metadata
+     id="metadata30">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>018-Explode</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs28" />
+  <title
+     id="title4">018-Explode</title>
+  <desc
+     id="desc6">Created with Sketch.</desc>
+  <g
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1"
+     transform="translate(0,6)"
+     id="g8">
+    <g
+       style="fill:#000000"
+       id="g10">
+      <polygon
+         id="polygon12"
+         points="38,48 38,23 13,23 13,48 " />
+      <polygon
+         id="polygon14"
+         points="11,31.0004 11,12.0004 0,23.7754 0,43.1174 " />
+      <polygon
+         id="polygon16"
+         points="32,0 20,12 40,12 51,0 " />
+      <path
+         id="path18"
+         d="m 50,4 c 0,0 -8.847,10 -9,10 l -17,0 0,7 16,0 0,10 7,0 0,-10 3,-3 0,-14 z" />
+      <polygon
+         id="polygon20"
+         points="49,42 60,30.441 60,11 49,23 " />
+    </g>
+  </g>
+</svg>

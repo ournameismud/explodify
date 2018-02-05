@@ -1,0 +1,44 @@
+{
+    "name": "ournameismud/explodify",
+    "description": "Plugin for exploding the contents of an uploaded ZIP file",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "explodify"
+    ],
+    "support": {
+        "docs": "https://github.com/cole007/explodify/blob/master/README.md",
+        "issues": "https://github.com/cole007/explodify/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "@cole007",
+            "homepage": "http://ournameismud.co.uk/"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "ournameismud\\explodify\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Explodify",
+        "handle": "explodify",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/cole007/explodify/master/CHANGELOG.md",
+        "components": {
+            "resource": "ournameismud\\explodify\\services\\Resource"
+        },
+        "class": "ournameismud\\explodify\\Explodify"
+    }
+}

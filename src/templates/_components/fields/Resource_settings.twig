@@ -1,0 +1,31 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Explodify plugin for Craft CMS
+ *
+ * Resource Field Settings
+ *
+ * @author    @cole007
+ * @copyright Copyright (c) 2018 @cole007
+ * @link      http://ournameismud.co.uk/
+ * @package   Explodify
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("ournameismud\\explodify\\assetbundles\\resourcefield\\ResourceFieldAsset") %}
+
+{% set options = [] %}
+{% for volume in volumes %}
+	{% set options = options|merge({(volume.key) : volume.label }) %}	
+{% endfor %}
+
+{{ forms.checkboxGroupField({
+    label: 'Volumes you want to access',
+    id: 'volumes',
+    options: options,
+    name: 'volumes',
+    values: field.volumes })
+}}
