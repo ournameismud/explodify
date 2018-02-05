@@ -94,8 +94,8 @@ class Resource extends Field
         // get entry slug        
         $slug = $element->slug;
         // get temporary file path
-        $asset->title = ElementHelper::createSlug($asset->title);
-        $asset->filename = ElementHelper::createSlug($asset->title) . '.zip';
+        // $asset->title = ElementHelper::createSlug($asset->title);
+        // $asset->filename = ElementHelper::createSlug($asset->title) . '.zip';
         
         // if ($asset->tempFilePath) {
         //     $path = $asset->tempFilePath;
@@ -176,11 +176,10 @@ class Resource extends Field
         Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').ExplodifyResource(" . $jsonVars . ");");
 
         $elements = [];
-        if ($value) {
-            foreach (json_decode($value) AS $id) {
-                $elements = [Craft::$app->getAssets()->getAssetById($id)];
-            }    
-        }        
+        foreach (json_decode($value) AS $id) {
+            $elements = [Craft::$app->getAssets()->getAssetById($id)];
+        }
+        
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
