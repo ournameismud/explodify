@@ -66,12 +66,17 @@ class ExplodifyVariable
         $slug = $entry->slug;
         
         $response = [];
-        
-        foreach ($ids AS $id) {
-            $asset = Craft::$app->getAssets()->getAssetById($id);
-            $title = $asset->title;
-            $path = 'resources/explodify/' . $slug.  '/' . $title;
-            $response[] = $this->returnElements($path);
+        if ($ids) {
+            foreach ($ids AS $id) {
+                $asset = Craft::$app->getAssets()->getAssetById($id);
+                $title = $asset->filename;
+                // $pattern = ;
+                // $replacement = '';
+                $title = preg_replace('/.zip$/i', '', $title);
+                $title = preg_replace('/-/', ' ', $title);
+                $path = 'resources/explodify/' . $slug.  '/' . $title;
+                $response[] = $this->returnElements($path);                
+            }
         }
         return $response;
     }

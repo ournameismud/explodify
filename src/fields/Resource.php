@@ -176,10 +176,11 @@ class Resource extends Field
         Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').ExplodifyResource(" . $jsonVars . ");");
 
         $elements = [];
-        foreach (json_decode($value) AS $id) {
-            $elements = [Craft::$app->getAssets()->getAssetById($id)];
-        }
-        
+        if ($value) {
+            foreach (json_decode($value) AS $id) {
+                $elements = [Craft::$app->getAssets()->getAssetById($id)];
+            }    
+        }        
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
