@@ -15,14 +15,12 @@
 
 {% import "_includes/forms" as forms %}
 {{ forms.elementSelectField({
-        elementType: elementType,
-        sourceElementId: value,
-        value: value,
-        elements: elements,
-        sources: volumes,
-        label: 'Some Field',
-        instructions: 'Enter some text here.',
-        limit: 1,
-        id: name,
-        name: name })
+	label: 'Asset',
+	selectionLabel: 'Choose your asset',
+	elementType: elementType,
+	elements: elements,
+	sources: volumes,
+	limit: 1,
+	id: name,
+	name: name })
 }}
