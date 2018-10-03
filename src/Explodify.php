@@ -44,6 +44,14 @@ class Explodify extends Plugin
      */
     public static $plugin;
 
+    // Public Properties
+    // =========================================================================
+
+    /**
+     * @var string
+     */
+    public $schemaVersion = '1.0.4';
+
     // Public Methods
     // =========================================================================
 
