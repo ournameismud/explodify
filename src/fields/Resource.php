@@ -120,7 +120,11 @@ class Resource extends Field
         if ($zip->open($tmpAsset) === TRUE) {
             // extract to path and close
             // http://php.net/manual/en/ziparchive.extractto.php
-            $dest = 'resources/explodify/' . $slug . '/';            
+            $dest = 'resources/explodify/' . $slug . '/';
+            $stat = $zip->statIndex( 0 );
+            $folder = $stat['name'];
+            $asset->vrFolder = $folder;
+            Craft::$app->getElements()->saveElement($asset);
             $zip->extractTo($dest);
             $zip->close();            
             // need log here
@@ -188,7 +192,6 @@ class Resource extends Field
             [
                 'name' => $this->handle,
                 'volumes' => $this->volumes,
-                'value' => $value,
                 'elements' => $elements,
                 'field' => $this,
                 'id' => $id,
