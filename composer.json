@@ -2,7 +2,7 @@
     "name": "ournameismud/explodify",
     "description": "Plugin for exploding the contents of an uploaded ZIP file",
     "type": "craft-plugin",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "keywords": [
         "craft",
         "cms",
@@ -32,7 +32,7 @@
     "extra": {
         "name": "Explodify",
         "handle": "explodify",
-        "schemaVersion": "1.0.0",
+        "schemaVersion": "1.0.5",
         "hasCpSettings": true,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/cole007/explodify/master/CHANGELOG.md",
