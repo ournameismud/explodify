@@ -11,8 +11,8 @@
         "explodify"
     ],
     "support": {
-        "docs": "https://github.com/cole007/explodify/blob/master/README.md",
-        "issues": "https://github.com/cole007/explodify/issues"
+        "docs": "https://github.com/ournameismud/explodify/blob/master/README.md",
+        "issues": "https://github.com/ournameismud/explodify/issues"
     },
     "license": "MIT",
     "authors": [
@@ -35,7 +35,7 @@
         "schemaVersion": "1.0.5",
         "hasCpSettings": true,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/cole007/explodify/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/ournameismud/explodify/master/CHANGELOG.md",
         "components": {
             "resource": "ournameismud\\explodify\\services\\Resource"
         },
