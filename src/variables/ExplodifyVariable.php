@@ -69,11 +69,9 @@ class ExplodifyVariable
         if ($ids) {
             foreach ($ids AS $id) {
                 $asset = Craft::$app->getAssets()->getAssetById($id);
-                $title = $asset->filename;
-                // $pattern = ;
-                // $replacement = '';
-                $title = preg_replace('/.zip$/i', '', $title);
-                $title = preg_replace('/-/', ' ', $title);
+                // requires vrFolder field and this associated with asset
+                // see src/fields/Resource.php
+                $title = $asset->vrFolder;
                 $path = 'resources/explodify/' . $slug.  '/' . $title;
                 $response[] = $this->returnElements($path);                
             }
