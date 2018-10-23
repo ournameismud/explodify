@@ -17,6 +17,7 @@ use craft\helpers\App;
 use craft\base\Element;
 use craft\elements\Asset;
 use craft\elements\Entry;
+use craft\helpers\ElementHelper;
 
 /**
  * @author    @cole007
@@ -30,6 +31,9 @@ class ExplodifyVariable
     private function returnElements($path) 
     {
         $response = [];
+        $pathArray = explode('/',$path);
+        $folder = array_pop($pathArray);
+        $path = join($pathArray,'/') . '/' . ElementHelper::createSlug($folder);
         if ($handle = opendir($path)) {
             while (false !== ($entry = readdir($handle))) {
                 if ($entry != "." && $entry != "..") {
@@ -66,15 +70,12 @@ class ExplodifyVariable
         $slug = $entry->slug;
         
         $response = [];
-        if ($ids) {
-            foreach ($ids AS $id) {
-                $asset = Craft::$app->getAssets()->getAssetById($id);
-                // requires vrFolder field and this associated with asset
-                // see src/fields/Resource.php
-                $title = $asset->vrFolder;
-                $path = 'resources/explodify/' . $slug.  '/' . $title;
-                $response[] = $this->returnElements($path);                
-            }
+        
+        foreach ($ids AS $id) {
+            $asset = Craft::$app->getAssets()->getAssetById($id);
+            $title = $asset->title;
+            $path = 'resources/explodify/' . $slug.  '/' . $title;
+            $response[] = $this->returnElements($path);
         }
         return $response;
     }

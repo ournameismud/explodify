@@ -93,17 +93,18 @@ class Resource extends Field
         $asset = Craft::$app->getAssets()->getAssetById($id);
         // get entry slug        
         $slug = $element->slug;
+        
+        // zip directory/destination
+        $dest = 'resources/explodify/' . $slug . '/';
+
         // get temporary file path
-        // $asset->title = ElementHelper::createSlug($asset->title);
-        // $asset->filename = ElementHelper::createSlug($asset->title) . '.zip';
-        
-        // if ($asset->tempFilePath) {
-        //     $path = $asset->tempFilePath;
-        // } else {
-        //     $path = $asset->getVolume()->path.DIRECTORY_SEPARATOR.$asset->getUri();
-        // }
-        
         $tmpAsset = $asset->getCopyOfFile();
+    
+        $newDir = $dest . ElementHelper::createSlug($asset->title); 
+        if (file_exists($newDir)) {
+            return $value;
+        } 
+
         // initiate zipArchive class
         // http://php.net/manual/en/ziparchive.extractto.php
         /*
@@ -120,22 +121,21 @@ class Resource extends Field
         if ($zip->open($tmpAsset) === TRUE) {
             // extract to path and close
             // http://php.net/manual/en/ziparchive.extractto.php
-            $dest = 'resources/explodify/' . $slug . '/';
-            $stat = $zip->statIndex( 0 );
-            $folder = $stat['name'];
-            $asset->vrFolder = $folder;
-            Craft::$app->getElements()->saveElement($asset);
+            $dirName = $zip->getNameIndex(0);
             $zip->extractTo($dest);
-            $zip->close();            
+            $zip->close();              
+            
+            $rename = rename($dest . $dirName, $newDir);
+            // $filename = $asset->filename          
             // need log here
-            Craft::info('File unzipped successfully for entry ['.$slug.']');
+            if ($rename) Craft::info('File unzipped and renamed successfully for entry ['.$slug.']');
+            else Craft::info('File unzipped successfully but could not rename for entry ['.$slug.']');
             // Yii::getLogger()->log('', Logger::LEVEL_INFO, true);
             // static::getLogger()->log('File unzipped successfully', Logger::LEVEL_INFO);
             // Craft::dd('unzipped');
         } else {
             // need log here
             Craft::info('File unzipped successfully');
-            // Craft::dd('unzip failed');
         }
         // FileHelper::removeFile($tmpAsset);
         // return parent::serializeValue($value, $element);
@@ -180,11 +180,12 @@ class Resource extends Field
         Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').ExplodifyResource(" . $jsonVars . ");");
 
         $elements = [];
-        if ($value) {
-            foreach (json_decode($value) AS $id) {
+        $decoded = json_decode($value);
+        if ($decoded) {
+            foreach ($decoded AS $id) {
                 $elements = [Craft::$app->getAssets()->getAssetById($id)];
             }    
-        }        
+        }
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
@@ -192,6 +193,7 @@ class Resource extends Field
             [
                 'name' => $this->handle,
                 'volumes' => $this->volumes,
+                'value' => $value,
                 'elements' => $elements,
                 'field' => $this,
                 'id' => $id,

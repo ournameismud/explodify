@@ -50,7 +50,7 @@ class Explodify extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.6';
+    public $schemaVersion = '1.0.7';
 
     // Public Methods
     // =========================================================================
